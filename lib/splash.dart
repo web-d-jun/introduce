@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:introduce/home.dart';
+import 'package:introduce/app.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _SplashState extends State<Splash> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const MyHomePage(title: "my home"),
+        builder: (context) => const App(),
       ),
     );
   }
