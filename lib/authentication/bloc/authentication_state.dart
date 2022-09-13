@@ -1,6 +1,10 @@
 part of 'authentication_bloc.dart';
 
-@immutable
-abstract class AuthenticationState {}
+class AuthenticationState extends Equatable {
+  const AuthenticationState._({this.status = '', this.user = ''});
 
-class AuthenticationInitial extends AuthenticationState {}
+  final String status;
+  final String user;
+  @override
+  List<Object> get props => [status, user];
+}

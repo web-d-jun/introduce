@@ -1,3 +1,4 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:introduce/app.dart';
 
@@ -20,7 +21,8 @@ class _SplashState extends State<Splash> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const App(),
+        builder: (context) =>
+            App(authenticationRepository: AuthenticationRepository()),
       ),
     );
   }

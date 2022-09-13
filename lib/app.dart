@@ -1,3 +1,4 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,12 +8,16 @@ import 'package:introduce/login/login.dart';
 import 'package:introduce/view/loading_view.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({super.key, required this.authenticationRepository});
+
+  final AuthenticationRepository authenticationRepository;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => AuthenticationBloc(),
+      create: (_) => AuthenticationBloc(
+        authenticationRepository: authenticationRepository,
+      ),
       child: const AppView(),
     );
   }
@@ -30,18 +35,18 @@ class _AppViewState extends State<AppView> {
   NavigatorState get _navigator => _navigatorKey.currentState!;
   @override
   Widget build(BuildContext context) {
-    print(_navigatorKey);
     return MaterialApp(
       navigatorKey: _navigatorKey,
       builder: (context, child) {
         print('${child} childchildchildchildchild');
         return BlocListener<AuthenticationBloc, AuthenticationState>(
           listener: (context, state) {
-            // _navigator.pushAndRemoveUntil(LoginPage.route(), (route) => false);
+            print('${state} statestatestate');
+            _navigator.pushAndRemoveUntil<void>(
+                LoginPage.route(), (route) => false);
           },
           child: child,
         );
-        // return
       },
       onGenerateRoute: (_) => LoadingView.route(),
     );
