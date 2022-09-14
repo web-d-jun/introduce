@@ -8,6 +8,7 @@ class Username extends FormzInput<String, UsernameValidationError> {
 
   @override
   UsernameValidationError? validator(String value) {
-    throw UnimplementedError();
+    print('${value} name');
+    // throw UnimplementedError();
   }
 }

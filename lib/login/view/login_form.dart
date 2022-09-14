@@ -7,19 +7,21 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('test'),
-    );
-    // return BlocListener<LoginBloc, LoginState>(
-    //   listener: (context, state) {
-    //     print('${state} statestatestatestate');
-    //   },
-    //   child: Align(
-    //     // alignment: const Alignment(0, y),
-    //     child: Column(
-    //       children: [Text("data")],
-    //     ),
+    // return Center(
+    //   child: Column(
+    //     children: [Text("data")],
     //   ),
     // );
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+        print('${state} statestatestatestate');
+      },
+      child: Align(
+        // alignment: const Alignment(0, y),
+        child: Column(
+          children: [Text("data")],
+        ),
+      ),
+    );
   }
 }

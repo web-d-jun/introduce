@@ -8,7 +8,8 @@ class Password extends FormzInput<String, PasswordValidationError> {
 
   @override
   PasswordValidationError? validator(String value) {
-    throw UnimplementedError();
+    print('${value} password');
+    // throw UnimplementedError();
   }
 }
 
