@@ -8,19 +8,21 @@ import 'package:equatable/equatable.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc
+    extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc({
     required AuthenticationRepository authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
         super(AuthenticationState._()) {
     on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
-    _authenticationStatusSubscription = _authenticationRepository.status.listen((status) {
-      print('${status} status?');
+    _authenticationStatusSubscription =
+        _authenticationRepository.status.listen((status) {
       add(AuthenticationStatusChanged(status));
     });
   }
   final AuthenticationRepository _authenticationRepository;
-  late StreamSubscription<AuthenticationStatus> _authenticationStatusSubscription;
+  late StreamSubscription<AuthenticationStatus>
+      _authenticationStatusSubscription;
 
   Future<void> _onAuthenticationStatusChanged(
     AuthenticationStatusChanged event,

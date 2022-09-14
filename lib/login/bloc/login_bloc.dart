@@ -12,9 +12,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     required AuthenticationRepository authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
         super(const LoginState()) {
-    on<LoginEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<LoginUsernameChanged>(_onUsernameChanged);
   }
   final AuthenticationRepository _authenticationRepository;
+}
+
+void _onUsernameChanged(LoginUsernameChanged event, Emitter<LoginState> emit) {
+  final username = Username.dirty(event.username);
+  print(username);
+  // emit()
 }
