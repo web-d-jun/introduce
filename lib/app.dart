@@ -38,12 +38,20 @@ class _AppViewState extends State<AppView> {
     return MaterialApp(
       navigatorKey: _navigatorKey,
       builder: (context, child) {
-        print('${child} childchildchildchildchild');
         return BlocListener<AuthenticationBloc, AuthenticationState>(
           listener: (context, state) {
-            print('${state} statestatestate');
-            _navigator.pushAndRemoveUntil<void>(
-                LoginPage.route(), (route) => false);
+            switch (state.status) {
+              case AuthenticationStatus.unauthenticated:
+                _navigator.pushAndRemoveUntil<void>(
+                    LoginPage.route(), (route) => false);
+                break;
+              case AuthenticationStatus.authenticated:
+                // TODO: Handle this case.
+                break;
+              case AuthenticationStatus.unknown:
+                // TODO: Handle this case.
+                break;
+            }
           },
           child: child,
         );

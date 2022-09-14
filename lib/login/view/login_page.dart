@@ -1,4 +1,8 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:introduce/login/bloc/login_bloc.dart';
+import 'package:introduce/login/login.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -10,7 +14,20 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("login_page")),
-    );
+        appBar: AppBar(
+          title: Text('Login'),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(12),
+          child: BlocProvider(
+            create: (context) {
+              return LoginBloc(
+                authenticationRepository:
+                    RepositoryProvider.of<AuthenticationRepository>(context),
+              );
+            },
+            child: const LoginForm(),
+          ),
+        ));
   }
 }
