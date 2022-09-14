@@ -20,5 +20,5 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 void _onUsernameChanged(LoginUsernameChanged event, Emitter<LoginState> emit) {
   final username = Username.dirty(event.username);
   print(username);
-  // emit()
+  // emit(state)
 }
