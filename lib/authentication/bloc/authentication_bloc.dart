@@ -31,6 +31,8 @@ class AuthenticationBloc
   @override
   Future<void> close() {
     print('close.....');
+    _authenticationStatusSubscription.cancel();
+    _authenticationRepository.dispose();
     return super.close();
   }
 
