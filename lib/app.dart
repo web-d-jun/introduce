@@ -4,13 +4,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:introduce/authentication/authentication.dart';
 import 'package:introduce/home.dart';
+import 'package:introduce/home/home.dart';
 import 'package:introduce/login/login.dart';
 import 'package:introduce/view/loading_view.dart';
+import 'package:user_repository/user_repository.dart';
 
 class App extends StatelessWidget {
-  const App({super.key, required this.authenticationRepository});
+  const App({
+    super.key,
+    required this.authenticationRepository,
+    required this.userRepository,
+  });
 
   final AuthenticationRepository authenticationRepository;
+  final UserRepository userRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +26,7 @@ class App extends StatelessWidget {
       child: BlocProvider(
         create: (_) => AuthenticationBloc(
           authenticationRepository: authenticationRepository,
+          userRepository: userRepository,
         ),
         child: const AppView(),
       ),
@@ -43,13 +51,15 @@ class _AppViewState extends State<AppView> {
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(
           listener: (context, state) {
+            print('${state.status} state.statusstate.status');
             switch (state.status) {
               case AuthenticationStatus.unauthenticated:
                 _navigator.pushAndRemoveUntil<void>(
                     LoginPage.route(), (route) => false);
                 break;
               case AuthenticationStatus.authenticated:
-                // TODO: Handle this case.
+                _navigator.pushAndRemoveUntil<void>(
+                    HomePage.route(), (route) => false);
                 break;
               case AuthenticationStatus.unknown:
                 // TODO: Handle this case.

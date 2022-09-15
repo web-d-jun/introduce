@@ -7,9 +7,10 @@ class Password extends FormzInput<String, PasswordValidationError> {
   const Password.dirty([super.value = '']) : super.dirty();
 
   @override
-  PasswordValidationError? validator(String value) {
+  PasswordValidationError? validator(String? value) {
     print('${value} password');
     // throw UnimplementedError();
+    return value?.isNotEmpty == true ? null : PasswordValidationError.empty;
   }
 }
 

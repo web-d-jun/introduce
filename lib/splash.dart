@@ -1,6 +1,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:introduce/app.dart';
+import 'package:user_repository/user_repository.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -21,8 +22,10 @@ class _SplashState extends State<Splash> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) =>
-            App(authenticationRepository: AuthenticationRepository()),
+        builder: (context) => App(
+          authenticationRepository: AuthenticationRepository(),
+          userRepository: UserRepository(),
+        ),
       ),
     );
   }
