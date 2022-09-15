@@ -16,6 +16,7 @@ class LoginForm extends StatelessWidget {
         // alignment: const Alignment(0, y),
         child: Column(
           children: [
+            _LogoContainer(),
             _UsernameInput(),
             const Padding(padding: EdgeInsets.all(12)),
             _PasswordInput(),
@@ -23,6 +24,23 @@ class LoginForm extends StatelessWidget {
             _LoginButton(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _LogoContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200.0,
+      width: 190.0,
+      padding: EdgeInsets.only(top: 40),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(200),
+      ),
+      child: Center(
+        child: Image.asset('asset/images/lockup_flutter_horizontal.png'),
       ),
     );
   }
@@ -38,6 +56,7 @@ class _UsernameInput extends StatelessWidget {
           onChanged: (username) =>
               context.read<LoginBloc>().add(LoginUsernameChanged(username)),
           decoration: InputDecoration(
+            border: const OutlineInputBorder(),
             labelText: 'username',
             errorText: state.username.invalid ? 'invaild username' : null,
           ),
@@ -58,6 +77,7 @@ class _PasswordInput extends StatelessWidget {
               context.read<LoginBloc>().add(LoginPasswordChanged(password)),
           obscureText: true,
           decoration: InputDecoration(
+            border: const OutlineInputBorder(),
             labelText: 'password',
             errorText: state.password.invalid ? 'invaild password' : null,
           ),
@@ -74,11 +94,22 @@ class _LoginButton extends StatelessWidget {
       builder: (context, state) {
         return state.status.isSubmissionInProgress
             ? const CircularProgressIndicator()
-            : ElevatedButton(
-                key: const Key('loginForm_continue_raisedButton'),
-                onPressed: () =>
-                    context.read<LoginBloc>().add(const LoginSubmitted()),
-                child: const Text('Login'));
+            : Container(
+                height: 50,
+                width: 250,
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(20)),
+                child: ElevatedButton(
+                  key: const Key('loginForm_continue_raisedButton'),
+                  onPressed: () =>
+                      context.read<LoginBloc>().add(const LoginSubmitted()),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                  ),
+                ),
+              );
       },
     );
   }
