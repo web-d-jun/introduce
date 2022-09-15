@@ -33,7 +33,7 @@ class _LogoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.0,
+      height: 150.0,
       width: 190.0,
       padding: EdgeInsets.only(top: 40),
       decoration: BoxDecoration(
