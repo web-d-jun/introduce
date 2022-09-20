@@ -29,17 +29,29 @@ class HomePageView extends StatefulWidget {
 }
 
 class _HomePageViewState extends State<HomePageView> {
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+    ),
+    Text(
+      'Index 1: Business',
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
       return Scaffold(
         body: Container(
-          child: Text('data'),
+          child: _widgetOptions.elementAt(state.selectedIndex),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home")
+            BottomNavigationBarItem(icon: Icon(Icons.menu), label: "카테고리"),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: "검색"),
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "쿠팡홈"),
+            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "마이쿠팡"),
+            BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: "장바구니")
           ],
           currentIndex: state.selectedIndex,
           onTap: (index) => context.read<HomeBloc>().add(HomeItemTapped(index)),
