@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:introduce/authentication/authentication.dart';
 import 'package:introduce/home/home.dart';
+import 'package:introduce/pages/pages.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -36,9 +37,7 @@ class _HomePageViewState extends State<HomePageView> {
     Text(
       'Index 1: Business',
     ),
-    Text(
-      'Index 2: Business',
-    ),
+    MainHome(),
     Text(
       'Index 3: Business',
     ),
