@@ -17,17 +17,12 @@ class MainHome extends StatelessWidget {
             ),
           ),
           SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Container(
-                  color: index.isOdd ? Colors.white : Colors.black12,
-                  height: 100.0,
-                  child: Center(
-                    child: Text('$index', textScaleFactor: 5),
-                  ),
-                );
-              },
-            ),
+            delegate: SliverChildListDelegate([
+              Container(child: Text("1")),
+              Container(child: Text("2")),
+              Container(child: Text("3")),
+              Container(child: Text("4"))
+            ]),
           ),
         ],
       ),
