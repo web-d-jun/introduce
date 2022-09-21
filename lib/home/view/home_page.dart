@@ -36,6 +36,15 @@ class _HomePageViewState extends State<HomePageView> {
     Text(
       'Index 1: Business',
     ),
+    Text(
+      'Index 2: Business',
+    ),
+    Text(
+      'Index 3: Business',
+    ),
+    Text(
+      'Index 4: Business',
+    ),
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 part of 'home_bloc.dart';
 
 class HomeState extends Equatable {
-  const HomeState({this.selectedIndex = 0});
+  const HomeState({this.selectedIndex = 2});
 
   final int selectedIndex;
 
