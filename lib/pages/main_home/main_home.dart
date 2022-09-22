@@ -8,12 +8,31 @@ class MainHome extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          const SliverAppBar(
+          SliverAppBar(
             pinned: false,
-            expandedHeight: 160.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text('scroll bar'),
-              background: FlutterLogo(),
+            // flexibleSpace: const FlexibleSpaceBar(
+            //   title: Text('shopping'),
+            //   background: FlutterLogo()
+            // ),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(45),
+              child: Column(
+                children: const <Widget>[
+                  SizedBox(
+                    height: 30,
+                    child: Text("Shopping"),
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: TextField(
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "검색창에서 검색해보세요.",
+                          prefixIcon: Icon(Icons.search)),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           SliverList(
