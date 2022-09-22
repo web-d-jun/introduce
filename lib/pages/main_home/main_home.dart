@@ -10,6 +10,7 @@ class MainHome extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             pinned: false,
+            backgroundColor: Colors.white,
             // flexibleSpace: const FlexibleSpaceBar(
             //   title: Text('shopping'),
             //   background: FlutterLogo()
@@ -17,18 +18,21 @@ class MainHome extends StatelessWidget {
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(45),
               child: Column(
-                children: const <Widget>[
-                  SizedBox(
+                children: <Widget>[
+                  const SizedBox(
                     height: 30,
                     child: Text("Shopping"),
                   ),
-                  SizedBox(
+                  Container(
                     height: 40,
-                    child: TextField(
+                    padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                    child: const TextField(
+                      readOnly: true,
                       decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: "검색창에서 검색해보세요.",
-                          prefixIcon: Icon(Icons.search)),
+                        border: OutlineInputBorder(),
+                        labelText: "검색창에서 검색해보세요.",
+                        prefixIcon: Icon(Icons.search),
+                      ),
                     ),
                   ),
                 ],
