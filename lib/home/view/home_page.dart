@@ -57,8 +57,8 @@ class _HomePageViewState extends State<HomePageView> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.menu), label: "카테고리"),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: "검색"),
-            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "쿠팡홈"),
-            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "마이쿠팡"),
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "쇼핑홈"),
+            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "마이쇼핑"),
             BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: "장바구니")
           ],
           currentIndex: state.selectedIndex,

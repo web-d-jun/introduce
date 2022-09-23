@@ -21,7 +21,10 @@ class MainHome extends StatelessWidget {
                 children: <Widget>[
                   const SizedBox(
                     height: 30,
-                    child: Text("Shopping"),
+                    child: Image(
+                      image: AssetImage('asset/images/logo.png'),
+                      width: 120,
+                    ),
                   ),
                   Container(
                     height: 40,
