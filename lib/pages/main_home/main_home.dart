@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:introduce/search/search.dart';
 
 class MainHome extends StatelessWidget {
   const MainHome({super.key});
@@ -29,14 +30,21 @@ class MainHome extends StatelessWidget {
                   Container(
                     height: 40,
                     padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                    child: const TextField(
-                      readOnly: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "검색창에서 검색해보세요.",
-                        prefixIcon: Icon(Icons.search),
-                      ),
-                    ),
+                    child: TextField(
+                        readOnly: true,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "검색창에서 검색해보세요.",
+                          prefixIcon: Icon(Icons.search),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) => const SearchPage()),
+                            ),
+                          );
+                        }),
                   ),
                 ],
               ),
