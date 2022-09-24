@@ -33,6 +33,7 @@ class MainHome extends StatelessWidget {
                     child: TextField(
                         readOnly: true,
                         decoration: const InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
                           border: OutlineInputBorder(),
                           labelText: "검색창에서 검색해보세요.",
                           prefixIcon: Icon(Icons.search),

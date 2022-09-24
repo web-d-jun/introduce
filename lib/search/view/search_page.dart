@@ -26,9 +26,10 @@ class SearchPage extends StatelessWidget {
             Expanded(
               child: Container(
                 height: 30,
-                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: const TextField(
                   decoration: InputDecoration(
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
                     border: OutlineInputBorder(),
                     labelText: "검색어 입력",
                   ),
