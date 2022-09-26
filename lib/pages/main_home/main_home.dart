@@ -27,25 +27,42 @@ class MainHome extends StatelessWidget {
                       width: 120,
                     ),
                   ),
-                  Container(
-                    height: 40,
-                    padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                    child: TextField(
-                        readOnly: true,
-                        decoration: const InputDecoration(
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          border: OutlineInputBorder(),
-                          labelText: "검색창에서 검색해보세요.",
-                          prefixIcon: Icon(Icons.search),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => const SearchPage()),
                         ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => const SearchPage()),
+                      );
+                    },
+                    child: Container(
+                      height: 40,
+                      padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black54),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(5.0),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 5.0, right: 5.0),
+                              child: const Icon(
+                                Icons.search,
+                                color: Colors.black54,
+                              ),
                             ),
-                          );
-                        }),
+                            const Text(
+                              "여기서 검색하세요!",
+                              style: TextStyle(fontSize: 17.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
