@@ -20,12 +20,24 @@ class MainHome extends StatelessWidget {
               preferredSize: Size.fromHeight(45),
               child: Column(
                 children: <Widget>[
-                  const SizedBox(
-                    height: 30,
-                    child: Image(
-                      image: AssetImage('asset/images/logo.png'),
-                      width: 120,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        height: 30,
+                        child: const Image(
+                          image: AssetImage('asset/images/logo.png'),
+                          width: 120,
+                        ),
+                      ),
+                      Container(
+                        alignment: Alignment.centerRight,
+                        child: Icon(Icons.notifications_none_outlined),
+                      )
+
+                      // Expanded(child: Icon(Icons.notifications_none_outlined))
+                    ],
                   ),
                   GestureDetector(
                     onTap: () {
