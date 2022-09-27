@@ -37,7 +37,7 @@ class _HomePageViewState extends State<HomePageView> {
     Text(
       'Index 1: Business',
     ),
-    MainHome(),
+    MainHomePage(),
     Text(
       'Index 3: Business',
     ),
@@ -57,9 +57,12 @@ class _HomePageViewState extends State<HomePageView> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.menu), label: "카테고리"),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: "검색"),
-            BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "쇼핑홈"),
-            BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: "마이쇼핑"),
-            BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_outlined), label: "장바구니")
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined), label: "쇼핑홈"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline), label: "마이쇼핑"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart_outlined), label: "장바구니")
           ],
           currentIndex: state.selectedIndex,
           onTap: (index) => context.read<HomeBloc>().add(HomeItemTapped(index)),
