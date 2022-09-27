@@ -31,22 +31,15 @@ class MainHome extends StatelessWidget {
                           width: 120,
                         ),
                       ),
-                      Container(
-                        alignment: Alignment.centerRight,
-                        child: Icon(Icons.notifications_none_outlined),
-                      )
-
-                      // Expanded(child: Icon(Icons.notifications_none_outlined))
+                      // Container(
+                      //   alignment: Alignment.centerRight,
+                      //   child: const Icon(Icons.notifications_none_outlined),
+                      // )
                     ],
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: ((context) => const SearchPage()),
-                        ),
-                      );
+                      Navigator.of(context).push(_createRoute());
                     },
                     child: Container(
                       height: 40,
@@ -61,7 +54,8 @@ class MainHome extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
-                              margin: const EdgeInsets.only(left: 5.0, right: 5.0),
+                              margin:
+                                  const EdgeInsets.only(left: 5.0, right: 5.0),
                               child: const Icon(
                                 Icons.search,
                                 color: Colors.black54,
@@ -92,4 +86,22 @@ class MainHome extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const SearchPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = const Offset(1.0, 0.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
 }
