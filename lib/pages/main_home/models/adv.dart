@@ -5,6 +5,6 @@ class Adv extends Equatable {
   final List<String> imgList;
 
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
   static const empty = Adv([]);
 }

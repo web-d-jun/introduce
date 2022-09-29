@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:introduce/pages/main_home/models/models.dart';
 
-class AdvApi {
+class AdvRepository {
   Adv? _adv;
 
   Future<Adv?> getAdv() async {
