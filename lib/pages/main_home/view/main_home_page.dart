@@ -4,55 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:introduce/search/search.dart';
 import 'package:introduce/pages/main_home/main_home.dart';
 
-final List<String> imgList = [
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
-];
-
-final List<Widget> imageSliders = imgList
-    .map((item) => Container(
-          margin: const EdgeInsets.all(5.0),
-          child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              child: Stack(
-                children: <Widget>[
-                  Image.network(item, fit: BoxFit.cover, width: 1000.0),
-                  Positioned(
-                    bottom: 0.0,
-                    left: 0.0,
-                    right: 0.0,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(200, 0, 0, 0),
-                            Color.fromARGB(0, 0, 0, 0)
-                          ],
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                        ),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      child: Text(
-                        'No. ${imgList.indexOf(item)} image',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )),
-        ))
-    .toList();
-
 class MainHomePage extends StatelessWidget {
   const MainHomePage({super.key});
 
@@ -60,93 +11,93 @@ class MainHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: BlocProvider(
-      create: (_) => MainHomeBloc(),
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            pinned: false,
-            backgroundColor: Colors.white,
-            // flexibleSpace: const FlexibleSpaceBar(
-            //   title: Text('shopping'),
-            //   background: FlutterLogo()
-            // ),
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(45),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        height: 30,
-                        child: const Image(
-                          image: AssetImage('asset/images/logo.png'),
-                          width: 120,
-                        ),
-                      ),
-                      // Container(
-                      //   alignment: Alignment.centerRight,
-                      //   child: const Icon(Icons.notifications_none_outlined),
-                      // )
-                    ],
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(_createRoute());
-                    },
-                    child: Container(
-                      height: 40,
-                      padding: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black54),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(5.0),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              margin:
-                                  const EdgeInsets.only(left: 5.0, right: 5.0),
-                              child: const Icon(
-                                Icons.search,
-                                color: Colors.black54,
-                              ),
+            create: (context) => MainHomeBloc()..add(Init()),
+            child: BlocBuilder<MainHomeBloc, MainHomeState>(
+              builder: (context, state) {
+                return CustomScrollView(
+                  slivers: <Widget>[
+                    SliverAppBar(
+                      pinned: false,
+                      backgroundColor: Colors.white,
+                      // flexibleSpace: const FlexibleSpaceBar(
+                      //   title: Text('shopping'),
+                      //   background: FlutterLogo()
+                      // ),
+                      bottom: PreferredSize(
+                        preferredSize: Size.fromHeight(45),
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 30,
+                                  child: const Image(
+                                    image: AssetImage('asset/images/logo.png'),
+                                    width: 120,
+                                  ),
+                                ),
+                                // Container(
+                                //   alignment: Alignment.centerRight,
+                                //   child: const Icon(Icons.notifications_none_outlined),
+                                // )
+                              ],
                             ),
-                            const Text(
-                              "여기서 검색하세요!",
-                              style: TextStyle(fontSize: 17.0),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(_createRoute());
+                              },
+                              child: Container(
+                                height: 40,
+                                padding:
+                                    const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.black54),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(5.0),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.only(
+                                            left: 5.0, right: 5.0),
+                                        child: const Icon(
+                                          Icons.search,
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                      const Text(
+                                        "여기서 검색하세요!",
+                                        style: TextStyle(fontSize: 17.0),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
                           ],
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Stack(
-                children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                        height: 150.0, enlargeCenterPage: false),
-                    items: imageSliders,
-                  ),
-                ],
-              ),
-              Container(child: Text("2")),
-              Container(child: Text("3")),
-              Container(child: Text("4"))
-            ]),
-          ),
-        ],
-      ),
-    ));
+                    SliverList(
+                      delegate: SliverChildListDelegate([
+                        Stack(
+                          children: [
+                            CarouselSliderWidget(),
+                          ],
+                        ),
+                        Container(child: Text("2")),
+                        Container(child: Text("3")),
+                        Container(child: Text("4"))
+                      ]),
+                    ),
+                  ],
+                );
+              },
+            )));
   }
 }
 

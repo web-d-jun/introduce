@@ -8,7 +8,7 @@ class Password extends FormzInput<String, PasswordValidationError> {
 
   @override
   PasswordValidationError? validator(String? value) {
-    print('${value} password');
+    // print('${value} password');
     // throw UnimplementedError();
     return value?.isNotEmpty == true ? null : PasswordValidationError.empty;
   }

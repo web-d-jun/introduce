@@ -5,9 +5,15 @@ part 'main_home_event.dart';
 part 'main_home_state.dart';
 
 class MainHomeBloc extends Bloc<MainHomeEvent, MainHomeState> {
-  MainHomeBloc() : super(MainHomeInitial()) {
-    on<MainHomeEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  MainHomeBloc() : super(const MainHomeState()) {
+    on<Init>(_onInit2);
+  }
+
+  void _onInit2(Init event, Emitter<MainHomeState> emit) async {
+    try {
+      print('onit');
+    } catch (error) {
+      return null;
+    }
   }
 }
