@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:introduce/pages/main_home/services/adv.dart';
 import 'package:introduce/pages/main_home/models/models.dart';
+import 'package:introduce/pages/pages.dart';
 
 part 'main_home_event.dart';
 part 'main_home_state.dart';
@@ -9,16 +10,19 @@ part 'main_home_state.dart';
 class MainHomeBloc extends Bloc<MainHomeEvent, MainHomeState> {
   MainHomeBloc()
       : _advRepository = AdvRepository(),
-        super(const MainHomeState()) {
+        super(const MainHomeState.initial()) {
     on<Init>(_onInit);
   }
   final AdvRepository _advRepository;
 
   void _onInit(Init event, Emitter<MainHomeState> emit) async {
     try {
-      print('onit');
       final imgList = await _tryGetAdv();
-      print('$imgList imgListimgList');
+      emit(
+        imgList != null
+            ? MainHomeState.setImgData(imgList: imgList)
+            : const MainHomeState.initial(),
+      );
     } catch (error) {
       return null;
     }
