@@ -83,14 +83,24 @@ class MainHomePage extends StatelessWidget {
                     ),
                     SliverList(
                       delegate: SliverChildListDelegate([
-                        Stack(
-                          children: [
-                            CarouselSliderWidget(),
-                          ],
-                        ),
-                        Container(child: Text("2")),
-                        Container(child: Text("3")),
-                        Container(child: Text("4"))
+                        Container(
+                          color: Colors.black54,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Container(
+                                    color: Colors.white,
+                                    child: CarouselSliderWidget(imgList: state.imgData.imgList),
+                                  )
+                                ],
+                              ),
+                              Container(child: Text("2")),
+                              Container(child: Text("3")),
+                              Container(child: Text("4"))
+                            ],
+                          ),
+                        )
                       ]),
                     ),
                   ],

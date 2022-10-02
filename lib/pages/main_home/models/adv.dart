@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/src/widgets/container.dart';
 
 class Adv extends Equatable {
   const Adv(this.imgList);
