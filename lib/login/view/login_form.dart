@@ -53,8 +53,7 @@ class _UsernameInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('loginForm_usernameInput_textField'),
-          onChanged: (username) =>
-              context.read<LoginBloc>().add(LoginUsernameChanged(username)),
+          onChanged: (username) => context.read<LoginBloc>().add(LoginUsernameChanged(username)),
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
             labelText: 'username',
@@ -73,8 +72,7 @@ class _PasswordInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('loginForm_passwordInput_textField'),
-          onChanged: (password) =>
-              context.read<LoginBloc>().add(LoginPasswordChanged(password)),
+          onChanged: (password) => context.read<LoginBloc>().add(LoginPasswordChanged(password)),
           obscureText: true,
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
@@ -97,13 +95,15 @@ class _LoginButton extends StatelessWidget {
             : Container(
                 height: 50,
                 width: 250,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(20)),
+                decoration:
+                    BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(20)),
                 child: ElevatedButton(
                   key: const Key('loginForm_continue_raisedButton'),
-                  onPressed: () =>
-                      context.read<LoginBloc>().add(const LoginSubmitted()),
+                  onPressed: () {
+                    // print(state.password);
+                    // _dialogBuilder(context, '', '');
+                    context.read<LoginBloc>().add(const LoginSubmitted());
+                  },
                   child: const Text(
                     'Login',
                     style: TextStyle(color: Colors.white, fontSize: 25),
@@ -113,4 +113,28 @@ class _LoginButton extends StatelessWidget {
       },
     );
   }
+}
+
+Future<void> _dialogBuilder(BuildContext context, String title, String content) {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('alert'),
+        content: const Text('content'),
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              textStyle: Theme.of(context).textTheme.labelLarge,
+            ),
+            child: const Text('Disable'),
+            onPressed: () {
+              // Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

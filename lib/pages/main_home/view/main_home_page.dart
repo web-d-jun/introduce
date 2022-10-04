@@ -14,7 +14,6 @@ class MainHomePage extends StatelessWidget {
             create: (context) => MainHomeBloc()..add(Init()),
             child: BlocBuilder<MainHomeBloc, MainHomeState>(
               builder: (context, state) {
-                print('get data ${state.imgData.imgList}');
                 return CustomScrollView(
                   slivers: <Widget>[
                     SliverAppBar(
@@ -87,15 +86,18 @@ class MainHomePage extends StatelessWidget {
                           color: Colors.black54,
                           child: Column(
                             children: [
-                              Stack(
-                                children: [
-                                  Container(
-                                    color: Colors.white,
-                                    child: CarouselSliderWidget(imgList: state.imgData.imgList),
-                                  )
-                                ],
+                              Container(
+                                padding: const EdgeInsets.only(bottom: 8),
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      color: Colors.white,
+                                      child: CarouselSliderWidget(imgList: state.imgData.imgList),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Container(child: Text("2")),
+                              Container(height: 500, child: Text("2")),
                               Container(child: Text("3")),
                               Container(child: Text("4"))
                             ],
