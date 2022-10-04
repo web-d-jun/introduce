@@ -97,9 +97,24 @@ class MainHomePage extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              Container(height: 500, child: Text("2")),
-                              Container(child: Text("3")),
-                              Container(child: Text("4"))
+                              Container(
+                                  color: Colors.white,
+                                  margin: const EdgeInsets.only(bottom: 8),
+                                  height: 500,
+                                  width: double.infinity,
+                                  child: Text("2")),
+                              Container(
+                                  color: Colors.white,
+                                  margin: const EdgeInsets.only(bottom: 8),
+                                  height: 500,
+                                  width: double.infinity,
+                                  child: Text("3")),
+                              Container(
+                                  color: Colors.white,
+                                  margin: const EdgeInsets.only(bottom: 8),
+                                  height: 500,
+                                  width: double.infinity,
+                                  child: Text("4")),
                             ],
                           ),
                         )
